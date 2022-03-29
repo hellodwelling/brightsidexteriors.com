@@ -46,14 +46,28 @@
     </url>
 
     <url>
-        <loc>https://brightsidexteriors.com/service-Residential-Cleaning</loc>
+        <loc>https://brightsidexteriors.com/service-Roof-Cleaning</loc>
         <lastmod>2022-03-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://brightsidexteriors.com/service-Commercial-Cleaning</loc>
+        <loc>https://brightsidexteriors.com/service-Paver-Cleaning</loc>
+        <lastmod>2022-03-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://brightsidexteriors.com/service-Pressure-Washing</loc>
+        <lastmod>2022-03-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://brightsidexteriors.com/service-Commercial-&-HOA</loc>
         <lastmod>2022-03-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
