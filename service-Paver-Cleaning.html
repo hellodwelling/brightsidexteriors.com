@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Residential &amp; Commercial Cleaning in Cape Coral, FL | Brightside Exterior Cleaning |  Service | Paver Cleaning</title>
     <meta name="description"
-          content="Paver Cleaning is a service we offer to clean your paver driveway, patio, or pool deck.">
+          content="Our paver sealant provides superior protection and enhancement.">
     <!-- <title>ProPhone Templates</title> -->
     <!-- TailwindCSS  -->
     <!-- <link rel="stylesheet" type="text/css" href="/staticfiles/landing_page_gen/tailwind.css"> -->
@@ -69,6 +69,7 @@
     <script type="text/javascript" defer>
                     function send_sms(slug){
                         console.log('send_sms',1, slug)
+                        event.preventDefault()
                         function uuidV4() {
                             return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
                               (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -187,7 +188,6 @@
                         }
                         const getSelectedServices = () =>{
                             const allSelectedServiced = Array.from(document.querySelectorAll('[id^="contact-service"]'))
-
                             if (allSelectedServiced.length){
                                 return allSelectedServiced.filter( (x)=> x.checked
                             ).map(item => item.value).join(",");
@@ -236,7 +236,7 @@
                                 sender_number: cleaned_sender_number,
                                 sender_message: sender_message,
                                 sender_address: sender_address,
-                                sender_contact_date: sender_contact_date,
+                                sender_date: sender_contact_date,
                                 photo,
                                 services
                             })
@@ -248,11 +248,29 @@
                             return result.json();
                         })
                         .then(result => {
+                            const sendTextModalId = document.getElementById("send-text-modal")
+                            sendTextModalId.style.display = 'none'
+                            const modalId = document.getElementById("text-thank-you")
+                            modalId.style.display = 'block';
+                            return result
+                        })
+                        .catch(result => {
                             console.log(result)
-                            alert("Your message has been sent!")
-                            location.reload()
+                            alert("There was a problem sending your text. Please reach out to ProPhone.")
                         })
 
+                        setTimeout(() => {
+                            const sendTextModalId = document.getElementById("send-text-modal")
+                            const modalId = document.getElementById("text-thank-you")
+                            modalId.style.display = 'none';
+                            if (sendTextModalId.style.display === 'none') {
+                                reload()
+                            }
+                        }, 5000);
+
+                        const reload = () => {
+                            location.reload()
+                        }
 
                     }
                 
@@ -352,8 +370,8 @@
                         class="flex items-center h-full transition-all duration-200 origin-left"
                     >
                         <!-- Logo Link -->
-                        <a
-                            href="/"
+                    
+                        <a  href= " index "
                             class="flex items-center justify-center flex-shrink-0 pr-5 bg-white rounded-md  focus:ring-2 focus:outline-none ring-primary ring-opacity-75 ring-offset-2"
                         >
                             <img
@@ -362,6 +380,7 @@
                                 alt="Brand Logo"
                             />
                         </a>
+                    
                     </div>
                     <!-- Links -->
                     <div
@@ -449,14 +468,14 @@
                                         <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                             <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                                                 <!-- Render each sublink -->
-                                                <!-- <each loop="link in [{&#x27;title&#x27;: &#x27;Our Roof Cleaning service includes a full inspection of your roof to identify any damage that may need repair. We use a safe and effective cleaning solution to remove any build-up of dirt, algae, moss or lichen from your roof.&#x27;, &#x27;copy&#x27;: &#x27;Roof Cleaning&#x27;, &#x27;href&#x27;: &#x27;service-Roof-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;Paver Cleaning is a service we offer to clean your paver driveway, patio, or pool deck. We use a high pressure hose and detergent to clean the surface and then rinse it with water.&#x27;, &#x27;copy&#x27;: &#x27;Paver Cleaning&#x27;, &#x27;href&#x27;: &#x27;service-Paver-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;Our pressure washing service is a great way to clean the exterior of your home or business. We use high-pressure water to remove dirt, dust, and debris from surfaces like sidewalks, driveways, and decks.&#x27;, &#x27;copy&#x27;: &#x27;Pressure Washing&#x27;, &#x27;href&#x27;: &#x27;service-Pressure-Washing&#x27;}, {&#x27;title&#x27;: &#x27;Our Commercial &amp; HOA service is perfect for busy professionals who need their office or common area cleaned and maintained on a regular basis. We offer flexible scheduling and customizable services to fit your needs.&#x27;, &#x27;copy&#x27;: &#x27;Commercial &amp; HOA&#x27;, &#x27;href&#x27;: &#x27;service-Commercial-&amp;-HOA&#x27;}]"> -->
+                                                <!-- <each loop="link in [{&#x27;title&#x27;: &#x27;We specialize in no-walking softwash roof cleaning. This includes a low-pressure application of our roof cleaning solution with a FREE cleaning of your gutters, soffits, fascia and full exterior wash-down before, during and after roof clean.  Contact us today to learn more! &#x27;, &#x27;copy&#x27;: &#x27;Roof Cleaning&#x27;, &#x27;href&#x27;: &#x27;service-Roof-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;Our paver sealant provides superior protection and enhancement. Our industry leading 10 step process will restore the luster to your pavers while also preventing weeds, mold, sun fading and more!  Contact us today to learn more! \n&#x27;, &#x27;copy&#x27;: &#x27;Paver Cleaning&#x27;, &#x27;href&#x27;: &#x27;service-Paver-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27; We offer both hot water and cold water pressure washing. We use industry leading cleaners and detergents to ensure the longest lasting, highest quality pressure clean the industry has to offer.  Contact us today to learn more!&#x27;, &#x27;copy&#x27;: &#x27;Pressure Washing&#x27;, &#x27;href&#x27;: &#x27;service-Pressure-Washing&#x27;}, {&#x27;title&#x27;: &#x27;Our team of exterior cleaning professionals specialize in large scale HOA and commercial projects. We are highly trained, experienced and equipped to take on any project that comes our way.  Contact us today to learn more!&#x27;, &#x27;copy&#x27;: &#x27;Commercial &amp; HOA&#x27;, &#x27;href&#x27;: &#x27;service-Commercial-&amp;-HOA&#x27;}]"> -->
                                                   
                                                     <a
                                                         href=" service-Roof-Cleaning "
                                                         role="menuitem"
                                                         class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
                                                     >
-                                                        <!-- <p class="text-base font-medium text-gray-900">Our Roof Cleaning service includes a full inspection of your roof to identify any damage that may need repair. We use a safe and effective cleaning solution to remove any build-up of dirt, algae, moss or lichen from your roof.</p> -->
+                                                        <!-- <p class="text-base font-medium text-gray-900">We specialize in no-walking softwash roof cleaning. This includes a low-pressure application of our roof cleaning solution with a FREE cleaning of your gutters, soffits, fascia and full exterior wash-down before, during and after roof clean.  Contact us today to learn more! </p> -->
                                                         <p class="mt-1 text-sm text-gray-500">Roof Cleaning</p>
                                                     </a>
                                                 <!-- </each> -->
@@ -467,7 +486,8 @@
                                                         role="menuitem"
                                                         class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
                                                     >
-                                                        <!-- <p class="text-base font-medium text-gray-900">Paver Cleaning is a service we offer to clean your paver driveway, patio, or pool deck. We use a high pressure hose and detergent to clean the surface and then rinse it with water.</p> -->
+                                                        <!-- <p class="text-base font-medium text-gray-900">Our paver sealant provides superior protection and enhancement. Our industry leading 10 step process will restore the luster to your pavers while also preventing weeds, mold, sun fading and more!  Contact us today to learn more! 
+</p> -->
                                                         <p class="mt-1 text-sm text-gray-500">Paver Cleaning</p>
                                                     </a>
                                                 <!-- </each> -->
@@ -478,7 +498,7 @@
                                                         role="menuitem"
                                                         class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
                                                     >
-                                                        <!-- <p class="text-base font-medium text-gray-900">Our pressure washing service is a great way to clean the exterior of your home or business. We use high-pressure water to remove dirt, dust, and debris from surfaces like sidewalks, driveways, and decks.</p> -->
+                                                        <!-- <p class="text-base font-medium text-gray-900"> We offer both hot water and cold water pressure washing. We use industry leading cleaners and detergents to ensure the longest lasting, highest quality pressure clean the industry has to offer.  Contact us today to learn more!</p> -->
                                                         <p class="mt-1 text-sm text-gray-500">Pressure Washing</p>
                                                     </a>
                                                 <!-- </each> -->
@@ -489,7 +509,7 @@
                                                         role="menuitem"
                                                         class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
                                                     >
-                                                        <!-- <p class="text-base font-medium text-gray-900">Our Commercial &amp; HOA service is perfect for busy professionals who need their office or common area cleaned and maintained on a regular basis. We offer flexible scheduling and customizable services to fit your needs.</p> -->
+                                                        <!-- <p class="text-base font-medium text-gray-900">Our team of exterior cleaning professionals specialize in large scale HOA and commercial projects. We are highly trained, experienced and equipped to take on any project that comes our way.  Contact us today to learn more!</p> -->
                                                         <p class="mt-1 text-sm text-gray-500">Commercial &amp; HOA</p>
                                                     </a>
                                                 <!-- </each> -->
@@ -560,19 +580,8 @@
                                         <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                             <div class="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                                                 <!-- Render each sublink -->
-                                                <!-- <each loop="link in [{&#x27;title&#x27;: &#x27;Our Best Work&#x27;, &#x27;copy&#x27;: &#x27;Residential Cleaning&#x27;, &#x27;href&#x27;: &#x27;gallery-Residential-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;Our Best Work&#x27;, &#x27;copy&#x27;: &#x27;Commercial Cleaning&#x27;, &#x27;href&#x27;: &#x27;gallery-Commercial-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;All Photos&#x27;, &#x27;copy&#x27;: &#x27;All Photos&#x27;, &#x27;href&#x27;: &#x27;gallery-All&#x27;}]"> -->
+                                                <!-- <each loop="link in [{&#x27;title&#x27;: &#x27;Our Best Work&#x27;, &#x27;copy&#x27;: &#x27;Commercial Cleaning&#x27;, &#x27;href&#x27;: &#x27;gallery-Commercial-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;Our Best Work&#x27;, &#x27;copy&#x27;: &#x27;Residential Cleaning&#x27;, &#x27;href&#x27;: &#x27;gallery-Residential-Cleaning&#x27;}, {&#x27;title&#x27;: &#x27;All Photos&#x27;, &#x27;copy&#x27;: &#x27;All Photos&#x27;, &#x27;href&#x27;: &#x27;gallery-All&#x27;}]"> -->
                                                   
-                                                    <a
-                                                        href=" gallery-Residential-Cleaning "
-                                                        role="menuitem"
-                                                        class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
-                                                    >
-                                                        <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
-                                                        <p class="mt-1 text-sm text-gray-500">Residential Cleaning</p>
-                                                    </a>
-                                                <!-- </each> -->
-                                               <!--  -->
-                                                 
                                                     <a
                                                         href=" gallery-Commercial-Cleaning "
                                                         role="menuitem"
@@ -580,6 +589,17 @@
                                                     >
                                                         <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
                                                         <p class="mt-1 text-sm text-gray-500">Commercial Cleaning</p>
+                                                    </a>
+                                                <!-- </each> -->
+                                               <!--  -->
+                                                 
+                                                    <a
+                                                        href=" gallery-Residential-Cleaning "
+                                                        role="menuitem"
+                                                        class="block p-3 -m-3 transition rounded-md  focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 hover:bg-gray-50"
+                                                    >
+                                                        <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
+                                                        <p class="mt-1 text-sm text-gray-500">Residential Cleaning</p>
                                                     </a>
                                                 <!-- </each> -->
                                                <!--  -->
@@ -786,25 +806,26 @@
                                             <!-- Render each sublink -->
                                             
                                                 <a href="service-Roof-Cleaning" role="menuitem" class="block p-3 -m-3 transition rounded-md">
-                                                    <!-- <p class="text-base font-medium text-gray-900">Our Roof Cleaning service includes a full inspection of your roof to identify any damage that may need repair. We use a safe and effective cleaning solution to remove any build-up of dirt, algae, moss or lichen from your roof.</p> -->
+                                                    <!-- <p class="text-base font-medium text-gray-900">We specialize in no-walking softwash roof cleaning. This includes a low-pressure application of our roof cleaning solution with a FREE cleaning of your gutters, soffits, fascia and full exterior wash-down before, during and after roof clean.  Contact us today to learn more! </p> -->
                                                     <p class="mt-1 text-sm text-gray-500">Roof Cleaning</p>
                                                 </a>
                                             <!-- </each> -->
                                             
                                                 <a href="service-Paver-Cleaning" role="menuitem" class="block p-3 -m-3 transition rounded-md">
-                                                    <!-- <p class="text-base font-medium text-gray-900">Paver Cleaning is a service we offer to clean your paver driveway, patio, or pool deck. We use a high pressure hose and detergent to clean the surface and then rinse it with water.</p> -->
+                                                    <!-- <p class="text-base font-medium text-gray-900">Our paver sealant provides superior protection and enhancement. Our industry leading 10 step process will restore the luster to your pavers while also preventing weeds, mold, sun fading and more!  Contact us today to learn more! 
+</p> -->
                                                     <p class="mt-1 text-sm text-gray-500">Paver Cleaning</p>
                                                 </a>
                                             <!-- </each> -->
                                             
                                                 <a href="service-Pressure-Washing" role="menuitem" class="block p-3 -m-3 transition rounded-md">
-                                                    <!-- <p class="text-base font-medium text-gray-900">Our pressure washing service is a great way to clean the exterior of your home or business. We use high-pressure water to remove dirt, dust, and debris from surfaces like sidewalks, driveways, and decks.</p> -->
+                                                    <!-- <p class="text-base font-medium text-gray-900"> We offer both hot water and cold water pressure washing. We use industry leading cleaners and detergents to ensure the longest lasting, highest quality pressure clean the industry has to offer.  Contact us today to learn more!</p> -->
                                                     <p class="mt-1 text-sm text-gray-500">Pressure Washing</p>
                                                 </a>
                                             <!-- </each> -->
                                             
                                                 <a href="service-Commercial-&amp;-HOA" role="menuitem" class="block p-3 -m-3 transition rounded-md">
-                                                    <!-- <p class="text-base font-medium text-gray-900">Our Commercial &amp; HOA service is perfect for busy professionals who need their office or common area cleaned and maintained on a regular basis. We offer flexible scheduling and customizable services to fit your needs.</p> -->
+                                                    <!-- <p class="text-base font-medium text-gray-900">Our team of exterior cleaning professionals specialize in large scale HOA and commercial projects. We are highly trained, experienced and equipped to take on any project that comes our way.  Contact us today to learn more!</p> -->
                                                     <p class="mt-1 text-sm text-gray-500">Commercial &amp; HOA</p>
                                                 </a>
                                             <!-- </each> -->
@@ -859,15 +880,15 @@
                                         <div class="relative grid gap-6 px-5 py-2 bg-white rounded-lg">
                                             <!-- Render each sublink -->
                                             
-                                                <a href="gallery-Residential-Cleaning" role="menuitem" class="block p-3 -m-3 transition rounded-md">
-                                                    <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
-                                                    <p class="mt-1 text-sm text-gray-500">Residential Cleaning</p>
-                                                </a>
-                                            <!-- </each> -->
-                                            
                                                 <a href="gallery-Commercial-Cleaning" role="menuitem" class="block p-3 -m-3 transition rounded-md">
                                                     <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
                                                     <p class="mt-1 text-sm text-gray-500">Commercial Cleaning</p>
+                                                </a>
+                                            <!-- </each> -->
+                                            
+                                                <a href="gallery-Residential-Cleaning" role="menuitem" class="block p-3 -m-3 transition rounded-md">
+                                                    <!-- <p class="text-base font-medium text-gray-900">Our Best Work</p> -->
+                                                    <p class="mt-1 text-sm text-gray-500">Residential Cleaning</p>
                                                 </a>
                                             <!-- </each> -->
                                             
@@ -1004,7 +1025,8 @@
                     <span class="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-primary sm:text-4xl">Paver Cleaning</span>
                     <!-- <span class="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-primary sm:text-4xl">Mowing</span> -->
                 </h1>
-                <p class="max-w-3xl text-xl text-center text-gray-500">Paver Cleaning is a service we offer to clean your paver driveway, patio, or pool deck. We use a high pressure hose and detergent to clean the surface and then rinse it with water.</p>
+                <p class="max-w-3xl text-xl text-center text-gray-500">Our paver sealant provides superior protection and enhancement. Our industry leading 10 step process will restore the luster to your pavers while also preventing weeds, mold, sun fading and more!  Contact us today to learn more! 
+</p>
                 <!-- <p class="max-w-3xl text-xl text-center text-gray-500">A big part of lawn maintenance is ensuring your lawn is regularly mowed. We know life gets busy, and we are here to help keep your lawn looking fresh. Mowing is the greatest!</p> -->
             </div>
             <!-- CTAs -->
@@ -1090,7 +1112,18 @@
                                             <!-- <img class="object-cover" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/6d797c7e-0334-417d-93f0-316f7c25284a.jpeg" alt="" /> -->
                                            
                                             
-                                            <img class="object-cover" 
+                                           <img class="block sm:hidden object-cover" 
+                                                src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/6d797c7e-0334-417d-93f0-316f7c25284a.jpeg" 
+                                                alt="Paver Cleaning for Brightside Exterior Cleaning in Cape Coral, FL"
+                                                style="
+                                                max-width: 100%;
+                                                width:auto;
+                                                height: 100%;
+                                                margin: auto;
+                                                "
+                                            >
+
+                                            <img class="hidden sm:block object-cover" 
                                                 src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/6d797c7e-0334-417d-93f0-316f7c25284a.jpeg" 
                                                 alt="Paver Cleaning for Brightside Exterior Cleaning in Cape Coral, FL"
                                                 style="
@@ -1118,7 +1151,18 @@
                                             <!-- <img class="object-cover" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/450e2186-ad8d-4197-b80a-468a5d8468b3.jpeg" alt="" /> -->
                                            
                                             
-                                            <img class="object-cover" 
+                                           <img class="block sm:hidden object-cover" 
+                                                src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/450e2186-ad8d-4197-b80a-468a5d8468b3.jpeg" 
+                                                alt="Paver Cleaning for Brightside Exterior Cleaning in Cape Coral, FL"
+                                                style="
+                                                max-width: 100%;
+                                                width:auto;
+                                                height: 100%;
+                                                margin: auto;
+                                                "
+                                            >
+
+                                            <img class="hidden sm:block object-cover" 
                                                 src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/450e2186-ad8d-4197-b80a-468a5d8468b3.jpeg" 
                                                 alt="Paver Cleaning for Brightside Exterior Cleaning in Cape Coral, FL"
                                                 style="
@@ -1198,11 +1242,11 @@
             <content>
                 
                     
-                        <p>If you are like most homeowners, you probably don&#x27;t think about cleaning your pavers very often. And that&#x27;s okay, because most people don&#x27;t! However, if you want to keep your pavers looking their best, it is important to have them cleaned on a regular basis.<br><br>Here at Brightside Exterior Cleaning, we offer a paver cleaning service that will help to keep your pavers looking their best. Our team of experienced professionals will use the latest equipment and techniques to clean your pavers quickly and efficiently. We can also treat any areas that seem to be affected by moss or algae growth.</p>
+                        <p>Our paver sealing provides superior protection and enhancement. Our industry leading 10 step process will restore the luster to your pavers while also preventing weeds, mold, sun fading and more!   Contact us today to learn more! <br><br>Paver sealing is highly recommended when it comes to protecting your pavers from the harsh elements we experience in Southwest Florida. Our paver sealing follows an in-depth 10 step industry leading process that includes several different cleanings, sweeping in new joint sand and sealing with 3 coats of our superior industry leading nanotechnology paver sealer. We also offer tint color restoration, injecting color back into faded pavers, making them look brand new again!<br><br>Benefits include:<br>✔️ Superior Wet-Look Color Enhancement <br>✔️ Superior Protection Against U/V Fading<br>✔️ Sealed Joint Sand <br>✔️ Increased Paver Stablization<br>✔️ Creates Hydrophobic Barrier<br>✔️ Reduces Weed Growth <br>✔️ Reduces Mold Growth</p>
                     
                 
                     
-                        <p>Our paver cleaning service is the perfect way to keep your pavers looking great for many seasons to come! Contact us today for more information or to schedule a free consultation.</p>
+                        <p></p>
                     
                 
             </content>
@@ -1777,7 +1821,7 @@ Brightside Exterior Cleaning is the best.
                       <ul role="list" class="mt-4 -mx-1 space-y-4">
                           <li>
                               <a
-                                  href="#"
+                                  href="index"
                                   class="p-1 text-base text-gray-100 rounded hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-opacity-75"
                                   >Home</a
                               >
@@ -1804,6 +1848,7 @@ Brightside Exterior Cleaning is the best.
                           
                           
                           
+                          
                           <li>
                               <a
                                   href='sitemap.xml'
@@ -1811,6 +1856,7 @@ Brightside Exterior Cleaning is the best.
                                   >Sitemap</a
                               >
                           </li>
+                          
                       </ul>
                   </div>
                   <!-- Services Links -->
@@ -1874,63 +1920,35 @@ Brightside Exterior Cleaning is the best.
                   <div class="mt-12 md:mt-0">
                       <h3 class="text-sm font-semibold tracking-wider text-gray-100 uppercase">Hours</h3>
                       <ul role="list" class="mt-4 -mx-1 space-y-4">
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Sun: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Mon: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Tues: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Wed: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Thu: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Fri: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
-                          <li>
-                              <a
-                                  href="#"
-                                  class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75"
-                                  >Sat: 8:00am - 6:00pm</a
-                              >
-                          </li>
-                          
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Sun:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Mon:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Tues:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Wed:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Thu:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Fri:  8:00am - 6:00pm 
+                            </li>
+                        
+                            <li class="p-1 text-base text-gray-100 rounded  hover:text-gray-300 focus:ring-2 focus:outline-none ring-white ring-offset-2 ring-opacity-75">
+                                Sat:  8:00am - 6:00pm 
+                            </li>
+                        
                       </ul>
                   </div>
               </div>
@@ -1972,6 +1990,7 @@ Brightside Exterior Cleaning is the best.
             :aria-labelledby="$id('modal-title')"
             class="fixed inset-0 z-40 md:pt-8 md:pb-20"
             x-trap.noscroll.inert="contactModalOpen"
+            id="send-text-modal"
     >
         <!-- Overlay -->
         <div
@@ -1995,11 +2014,11 @@ Brightside Exterior Cleaning is the best.
                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 @click="contactModalOpen = false"
-                class="relative flex items-center justify-center w-full h-full sm:h-max"
+                class="relative flex items-center justify-center w-full h-full"
         >
             <div
                     @click.stop
-                    class="flex flex-col w-full h-full overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:px-0 sm:my-0 sm:align-middle sm:max-w-3xl"
+                    class="flex flex-col w-full 2xl:h-max 2xl:mt-8 h-full overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:px-0 sm:my-0 sm:align-middle sm:max-w-3xl"
             >
                 <!-- Header -->
                 <div class="relative px-6 bg-white">
@@ -2020,7 +2039,7 @@ Brightside Exterior Cleaning is the best.
 
                 <!-- Form -->
 
-                <form class="overflow-y-scroll pb-20 sm:w-full">
+                <form class="overflow-y-auto pb-20 sm:w-full" onsubmit="send_sms('Brightside-Exterior-Cleaning-1')">
                     <div class="flex-grow h-full overflow-x-hidden overflow-y-auto">
                         <div class="h-full px-6 pb-1 mt-6 space-y-6 sm:grid sm:grid-cols-2 sm:min-w-max sm:space-x-3">
                             <!-- Full Name -->
@@ -2042,6 +2061,7 @@ Brightside Exterior Cleaning is the best.
                             <div>
                                 <label for="contact-phone-number" class="sr-only">Phone Number</label>
                                 <input
+                                        required
                                         type="tel"
                                         name="phone-number"
                                         id="contact-phone-number"
@@ -2101,46 +2121,46 @@ Brightside Exterior Cleaning is the best.
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167221"
-                                                    name="167221"
+                                                    id="contact-service-198127"
+                                                    name="198127"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Roof Cleaning"
                                             />
-                                            <label for="contact-label-service-167221" class="ml-3 text-sm font-medium text-gray-700">Roof Cleaning</label>
+                                            <label for="contact-label-service-198127" class="ml-3 text-sm font-medium text-gray-700">Roof Cleaning</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167222"
-                                                    name="167222"
+                                                    id="contact-service-198128"
+                                                    name="198128"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Paver Cleaning"
                                             />
-                                            <label for="contact-label-service-167222" class="ml-3 text-sm font-medium text-gray-700">Paver Cleaning</label>
+                                            <label for="contact-label-service-198128" class="ml-3 text-sm font-medium text-gray-700">Paver Cleaning</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167223"
-                                                    name="167223"
+                                                    id="contact-service-198129"
+                                                    name="198129"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Pressure Washing"
                                             />
-                                            <label for="contact-label-service-167223" class="ml-3 text-sm font-medium text-gray-700">Pressure Washing</label>
+                                            <label for="contact-label-service-198129" class="ml-3 text-sm font-medium text-gray-700">Pressure Washing</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167224"
-                                                    name="167224"
+                                                    id="contact-service-198130"
+                                                    name="198130"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Commercial & HOA"
                                             />
-                                            <label for="contact-label-service-167224" class="ml-3 text-sm font-medium text-gray-700">Commercial & HOA</label>
+                                            <label for="contact-label-service-198130" class="ml-3 text-sm font-medium text-gray-700">Commercial & HOA</label>
                                         </div>
                                         
                                     </div>
@@ -2153,7 +2173,6 @@ Brightside Exterior Cleaning is the best.
                                 <div class='sm:flex-grow'>
                                     <label for="contact-concern" class="sr-only">How can we help you?</label>
                                     <textarea
-                                            required
                                             id="contact-concern"
                                             name="concern"
                                             rows="4"
@@ -2172,46 +2191,46 @@ Brightside Exterior Cleaning is the best.
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167221"
-                                                    name="167221"
+                                                    id="contact-service-198127"
+                                                    name="198127"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Roof Cleaning"
                                             />
-                                            <label for="contact-label-service-167221" class="ml-3 text-sm font-medium text-gray-700">Roof Cleaning</label>
+                                            <label for="contact-label-service-198127" class="ml-3 text-sm font-medium text-gray-700">Roof Cleaning</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167222"
-                                                    name="167222"
+                                                    id="contact-service-198128"
+                                                    name="198128"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Paver Cleaning"
                                             />
-                                            <label for="contact-label-service-167222" class="ml-3 text-sm font-medium text-gray-700">Paver Cleaning</label>
+                                            <label for="contact-label-service-198128" class="ml-3 text-sm font-medium text-gray-700">Paver Cleaning</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167223"
-                                                    name="167223"
+                                                    id="contact-service-198129"
+                                                    name="198129"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Pressure Washing"
                                             />
-                                            <label for="contact-label-service-167223" class="ml-3 text-sm font-medium text-gray-700">Pressure Washing</label>
+                                            <label for="contact-label-service-198129" class="ml-3 text-sm font-medium text-gray-700">Pressure Washing</label>
                                         </div>
                                         
                                         <div class="flex items-center">
                                             <input
-                                                    id="contact-service-167224"
-                                                    name="167224"
+                                                    id="contact-service-198130"
+                                                    name="198130"
                                                     type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded text-primary focus:ring-primary"
                                                     value="Commercial & HOA"
                                             />
-                                            <label for="contact-label-service-167224" class="ml-3 text-sm font-medium text-gray-700">Commercial & HOA</label>
+                                            <label for="contact-label-service-198130" class="ml-3 text-sm font-medium text-gray-700">Commercial & HOA</label>
                                         </div>
                                         
                                     </div>
@@ -2223,47 +2242,88 @@ Brightside Exterior Cleaning is the best.
                             </div>
                         </div>
                     </div>
-
+                    <div class="flex items-center justify-center w-full">
+                        <button     class="
+                                    py-2.5
+                                    w-4/5
+                                    fixed
+                                    bottom
+                                    text-sm
+                                    font-medium
+                                    transition
+                                    border-2 border-transparent
+                                    rounded-md
+                                    bg-primary
+                                    text-primary-foreground
+                                    focus:outline-none
+                                    hover:bg-primary-darker
+                                    bg-primar
+                                    focus-visible:ring-2
+                                    ring-primary ring-opacity-75 ring-offset-2"
+                                    style="
+                                    position:absolute;
+                                    left: 50%;
+                                    bottom: 0;
+                                    transform: translate(-50%, -50%);
+                                    margin-top: 0;
+                                    margin-bottom: 0">Send
+                        </button>
+                    </div>
                 </form>
-                <div class="flex
-                                items-center
-                                justify-center
-                                w-full
-                            "
-                     onclick="send_sms('Brightside-Exterior-Cleaning-1')"
-                >
-                    <button class="
-                                py-2.5
-                                w-4/5
-                                fixed
-                                bottom
-                                text-sm
-                                font-medium
-                                transition
-                                border-2 border-transparent
-                                rounded-md
-                                bg-primary
-                                text-primary-foreground
-                                focus:outline-none
-                                hover:bg-primary-darker
-                                bg-primar
-                                focus-visible:ring-2
-                                ring-primary ring-opacity-75 ring-offset-2" 
-                                style="
-                                position:absolute;
-                                left: 50%;
-                                bottom: 0;
-                                transform: translate(-50%, -50%);
-                                margin-top: 0;
-                                margin-bottom: 0"> Send
-                    </button>
-                </div>
 
 
             </div>
         </div>
     </div>
 </template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = Array.from(
+            document.querySelectorAll('input[name=email], input[name=phone-number]')
+        )
+
+        const inputListener = e => {
+            inputs
+                .filter(i => i !== e.target)
+                .forEach(i => (i.required = !e.target.value.length))
+        }
+
+        inputs.forEach(i => i.addEventListener('input', inputListener))
+    })
+</script>
+<div
+	class="fixed top-36 inset-x-0 z-50 mx-auto p-4 border w-96 shadow-lg rounded-md bg-white backdrop-blur-sm"
+    id="text-thank-you"
+    style="display: none"
+>
+	<div class="mt-3 text-center">
+		<div
+			class="mx-auto mb-3 flex items-center justify-center h-12 w-12 rounded-full bg-green-100"
+		>
+			<svg
+				class="h-6 w-6 text-green-600"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M5 13l4 4L19 7"
+				></path>
+			</svg>
+		</div>
+		<h3 class="text-lg leading-6 font-medium text-gray-900">Thank you!</h3>
+		<div class="mt-1 px-7 py-3">
+			<p class="text-sm text-gray-500">
+				Your message was sent successfully. We’ll send you a text or give you a call soon.
+			</p>
+		</div>
+	</div>
+</div>
 <!-- Modal -->
 <template x-teleport="body">
     <div x-show="reviewModalOpen" @keydown.escape.prevent.stop="reviewModalOpen = false" role="dialog" aria-modal="true" x-id="['modal-title']" :aria-labelledby="$id('modal-title')" class="fixed inset-0 z-40 pt-8 pb-20" x-trap.noscroll.inert="reviewModalOpen">
