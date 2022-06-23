@@ -1586,7 +1586,7 @@
             <div
     x-data="{
         activeImage: 0,
-        amountOfImages: 20,
+        amountOfImages: 19,
         next() {
             if (this.activeImage < this.amountOfImages - 1)
                 this.activeImage ++;
@@ -1879,7 +1879,7 @@
                     <button @click="activeImage = 16; galleryModalOpen = true" class="block w-full h-full space-y-4 text-left rounded focus:outline-none focus-visible:ring ring-primary ring-offset-2 ring-opacity-75">
                         <div class="aspect-w-3 aspect-h-2">
                             
-                                <img class="object-cover rounded-lg shadow-lg" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/15650659-bdc3-4149-a6e1-76045fd8a183.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
+                                <img class="object-cover rounded-lg shadow-lg" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/43b2adf3-13a7-4425-99e6-6ec072a63992.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
                             
                         </div>
 
@@ -1896,23 +1896,6 @@
                     <button @click="activeImage = 17; galleryModalOpen = true" class="block w-full h-full space-y-4 text-left rounded focus:outline-none focus-visible:ring ring-primary ring-offset-2 ring-opacity-75">
                         <div class="aspect-w-3 aspect-h-2">
                             
-                                <img class="object-cover rounded-lg shadow-lg" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/43b2adf3-13a7-4425-99e6-6ec072a63992.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
-                            
-                        </div>
-
-                        <div class="space-y-1 text-lg font-medium leading-6">
-                            <p class="line-clamp-3"></p>
-                            <h3 class="text-primary"></h3>
-                        </div>
-                    </button>
-                </div>
-            </li>
-        
-            <li x-cloak x-data="{ shown: false }" x-intersect.full="shown = true" class=" hidden ">
-                <div x-show="shown" x-transition:enter="transition duration-1000" x-transition:enter-start="transform translate-y-20" x-transition:enter-end="transform translate-y-0">
-                    <button @click="activeImage = 18; galleryModalOpen = true" class="block w-full h-full space-y-4 text-left rounded focus:outline-none focus-visible:ring ring-primary ring-offset-2 ring-opacity-75">
-                        <div class="aspect-w-3 aspect-h-2">
-                            
                                 <img class="object-cover rounded-lg shadow-lg" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/5ac7501c-1d97-4f6f-9c76-85cf5b9d4566.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
                             
                         </div>
@@ -1927,7 +1910,7 @@
         
             <li x-cloak x-data="{ shown: false }" x-intersect.full="shown = true" class=" hidden ">
                 <div x-show="shown" x-transition:enter="transition duration-1000" x-transition:enter-start="transform translate-y-20" x-transition:enter-end="transform translate-y-0">
-                    <button @click="activeImage = 19; galleryModalOpen = true" class="block w-full h-full space-y-4 text-left rounded focus:outline-none focus-visible:ring ring-primary ring-offset-2 ring-opacity-75">
+                    <button @click="activeImage = 18; galleryModalOpen = true" class="block w-full h-full space-y-4 text-left rounded focus:outline-none focus-visible:ring ring-primary ring-offset-2 ring-opacity-75">
                         <div class="aspect-w-3 aspect-h-2">
                             
                                 <img class="object-cover rounded-lg shadow-lg" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/51e8db8f-3256-486c-b46b-dbd4b78721aa.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
@@ -2099,26 +2082,19 @@
                                 
                                     <li class="flex flex-col" x-show="activeImage === 16">
                                             
-                                            <img class="mt-2 lg:h-[481px] h-[200px] sm:h-[300px] self-center rounded-md object-cover"  src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/15650659-bdc3-4149-a6e1-76045fd8a183.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
+                                            <img class="mt-2 lg:h-[481px] h-[200px] sm:h-[300px] self-center rounded-md object-cover"  src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/43b2adf3-13a7-4425-99e6-6ec072a63992.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
                                             <p lorem="1" class="mt-3 text-gray-500"></p>
                                         
                                     </li>
                                 
                                     <li class="flex flex-col" x-show="activeImage === 17">
                                             
-                                            <img class="mt-2 lg:h-[481px] h-[200px] sm:h-[300px] self-center rounded-md object-cover"  src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/43b2adf3-13a7-4425-99e6-6ec072a63992.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
-                                            <p lorem="1" class="mt-3 text-gray-500"></p>
-                                        
-                                    </li>
-                                
-                                    <li class="flex flex-col" x-show="activeImage === 18">
-                                            
                                             <img class="mt-2 lg:h-[481px] h-[200px] sm:h-[300px] self-center rounded-md object-cover"  src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/5ac7501c-1d97-4f6f-9c76-85cf5b9d4566.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
                                             <p lorem="1" class="mt-3 text-gray-500"></p>
                                         
                                     </li>
                                 
-                                    <li class="flex flex-col" x-show="activeImage === 19">
+                                    <li class="flex flex-col" x-show="activeImage === 18">
                                             
                                             <img class="mt-2 lg:h-[481px] h-[200px] sm:h-[300px] self-center rounded-md object-cover"  src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/51e8db8f-3256-486c-b46b-dbd4b78721aa.jpeg" alt="Roof Cleaning for Brightside Exterior Cleaning in Cape Coral, FL" loading="lazy"/>
                                             <p lorem="1" class="mt-3 text-gray-500"></p>
